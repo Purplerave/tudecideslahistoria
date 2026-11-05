@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La última llamada — Capítulo 1 · Tú decides la historia</title>
+<meta name="description" content="Una historia de terror por entregas. Tú votas, yo escribo. Capítulo 1: La voz de las tres.">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --panel: #12121c;
+    --panel2: #171724;
+    --ink: #e8e0d0;
+    --muted: #9a93a8;
+    --purple: #9b4dca;
+    --purple-deep: #7b2fbe;
+    --amber: #f5c542;
+    --red: #d33a2c;
+    --line: #2a2a3a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 20px 64px; }
+
+  header { padding: 34px 0 8px; text-align: center; }
+  .station {
+    font-family: 'Courier New', monospace;
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .onair {
+    display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--red); margin-right: 8px; vertical-align: middle;
+    animation: pulse 1.6s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+  h1.blog {
+    font-size: 40px; line-height: 1.1; margin: 14px 0 6px; font-weight: bold;
+    letter-spacing: -0.5px;
+  }
+  h1.blog em { color: var(--purple); font-style: normal; }
+  .tagline { color: var(--muted); font-style: italic; font-size: 17px; }
+
+  .wave { display: flex; gap: 4px; justify-content: center; align-items: flex-end; height: 28px; margin: 22px 0 4px; }
+  .wave i { display: block; width: 3px; background: var(--purple-deep); border-radius: 2px; animation: wave 1.1s ease-in-out infinite; }
+  .wave i:nth-child(1) { height: 8px; }
+  .wave i:nth-child(2) { height: 18px; animation-delay: .1s; }
+  .wave i:nth-child(3) { height: 26px; animation-delay: .2s; }
+  .wave i:nth-child(4) { height: 14px; animation-delay: .3s; }
+  .wave i:nth-child(5) { height: 22px; animation-delay: .4s; }
+  .wave i:nth-child(6) { height: 10px; animation-delay: .5s; }
+  .wave i:nth-child(7) { height: 20px; animation-delay: .6s; }
+  @keyframes wave { 0%,100% { transform: scaleY(.6); } 50% { transform: scaleY(1); } }
+
+  .how {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    margin: 26px 0 8px;
+  }
+  .how div {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 12px; font-size: 14px; line-height: 1.45; color: var(--muted);
+    font-family: 'Courier New', monospace;
+  }
+  .how b { display: block; color: var(--amber); font-size: 13px; margin-bottom: 4px; letter-spacing: 1px; }
+
+  .story-head { text-align: center; margin: 34px 0 6px; }
+  .story-head .kicker {
+    font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--purple);
+  }
+  .story-head h2 { font-size: 34px; margin: 8px 0 4px; line-height: 1.15; }
+  .story-head .chapter { color: var(--muted); font-style: italic; font-size: 18px; }
+
+  article { margin-top: 26px; font-size: 18px; }
+  article p { margin-bottom: 1.15em; }
+  article p:first-of-type::first-letter {
+    font-size: 54px; line-height: 1; float: left; padding: 4px 8px 0 0;
+    color: var(--purple); font-weight: bold;
+  }
+  .scene-break { text-align: center; color: var(--purple); letter-spacing: 8px; margin: 26px 0; font-size: 18px; }
+
+  .vote {
+    margin-top: 40px; background: var(--panel2); border: 1px solid var(--purple-deep);
+    border-radius: 14px; padding: 26px 22px 22px; text-align: center;
+  }
+  .vote h3 { font-size: 26px; margin-bottom: 4px; }
+  .vote h3 span { color: var(--amber); }
+  .vote p.sub { color: var(--muted); font-size: 15px; margin-bottom: 18px; font-style: italic; }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .options a {
+    display: block; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; padding: 18px 14px; text-decoration: none; color: var(--ink);
+    transition: border-color .2s, transform .2s;
+  }
+  .options a:hover { border-color: var(--purple); transform: translateY(-2px); }
+  .options .letter {
+    display: inline-block; width: 30px; height: 30px; line-height: 30px; border-radius: 50%;
+    background: var(--purple-deep); color: #fff; font-family: 'Courier New', monospace;
+    font-weight: bold; margin-bottom: 8px;
+  }
+  .options .txt { font-size: 16px; line-height: 1.4; }
+  .vote .deadline { margin-top: 16px; font-size: 13px; color: var(--muted); font-family: 'Courier New', monospace; }
+
+  footer { margin-top: 44px; text-align: center; color: var(--muted); font-size: 14px; line-height: 1.8; }
+  footer .next { color: var(--amber); font-family: 'Courier New', monospace; font-size: 13px; letter-spacing: 1px; }
+  @media (max-width: 560px) {
+    h1.blog { font-size: 32px; }
+    .how { grid-template-columns: 1fr; }
+    .options { grid-template-columns: 1fr; }
+    article { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="station"><span class="onair"></span>Radio Faro &middot; 3:12 AM</p>
+    <h1 class="blog">Tú decides <em>la historia</em></h1>
+    <p class="tagline">Una historia de terror por entregas. Tú votas, yo escribo.</p>
+    <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </header>
+
+  <section class="how">
+    <div><b>1 · LEE</b>Un capítulo nuevo cada jueves.</div>
+    <div><b>2 · VOTA</b>Al final del capítulo, elige entre dos caminos.</div>
+    <div><b>3 · DECIDE</b>El capítulo siguiente sigue la opción ganadora.</div>
+  </section>
+
+  <div class="story-head">
+    <p class="kicker">Primera historia</p>
+    <h2>La última llamada</h2>
+    <p class="chapter">Capítulo 1 — La voz de las tres</p>
+  </div>
+
+  <article>
+    <p>Son las tres y doce de la madrugada y estoy solo en el estudio. Esto es lo que no se oye en la radio: el zumbido de los fluorescentes, el crujido de mi silla, mi propia respiración. Fuera, la ciudad duerme. Dentro, solo yo y el micrófono.</p>
+
+    <p>Me llamo Marcos Ferrer y presento <i>Noche en vela</i> en Radio Faro. De una a cinco, de lunes a viernes. La gente que llama a estas horas no duerme por algo: insomnio, un turno de noche, una pena. Yo les hablo, les pongo una canción y les digo que no están solos. Es mentira a medias. Yo sí estoy solo. Siempre.</p>
+
+    <p>A las tres y doce suena la línea dos. Carmen, la enfermera, suele llamar a las dos. A las tres no llama nadie. Miro el identificador: sin número. Descuelgo por costumbre, porque el silencio en antena es lo único que no me puedo permitir.</p>
+
+    <p>—Buenas noches, Marcos.</p>
+
+    <p>Una voz tranquila. De hombre, joven, educada. Como si me conociera de toda la vida.</p>
+
+    <p>—Buenas noches —digo—. ¿Con quién hablo?</p>
+
+    <p>—Con un oyente. Llevo mucho tiempo escuchándote. —Hace una pausa. Oigo su respiración, acompasada, sin prisa—. Tienes la luz de la cocina encendida.</p>
+
+    <p>Sonrío, por oficio. Los oyentes de madrugada dicen cosas raras, es parte del programa.</p>
+
+    <p>—Pues claro, amigo, si no, ¿cómo voy a ver el botón del microondas? —digo, y me río un poco para que se ría él.</p>
+
+    <p>No se ríe.</p>
+
+    <p>—La dejaste encendida al salir —dice—. Y la taza roja. La dejaste en la mesa, pero ahora está en el fregadero.</p>
+
+    <p>Se me corta la risa. La taza roja. La dejé en la mesa, sí. Estoy seguro. Siempre desayuno en la misma taza roja y siempre la dejo en la mesa, junto a la ventana, hasta que vuelvo. Nadie puede saber eso. Nadie ha estado en mi cocina.</p>
+
+    <p>—Escucha —digo, y noto que mi voz ya no suena a voz de radio—. ¿Quién eres?</p>
+
+    <p>—La foto de tu madre —continúa, como si no me hubiera oído—. Se te cayó el martes. Está boca abajo en la estantería y no la has vuelto a levantar. La puerta del baño está entreabierta. El pasillo, a oscuras.</p>
+
+    <p>Todo verdad. Todo. La foto se me cayó el martes al coger el abrigo y no la levanté. No sé por qué no la levanté.</p>
+
+    <p>—Cómo… —empiezo, y no termino. Fuera del estudio, el pasillo de la emisora está vacío. Dentro, solo yo y esa voz—. ¿Estás en mi casa?</p>
+
+    <p>—No —dice—. Acabo de salir. Pero vuelvo enseguida. Te voy a decir lo que va a pasar, Marcos, para que compruebes que no miento: cuando llegues a casa, la puerta del baño estará cerrada. Tú nunca la cierras.</p>
+
+    <p>El reloj del estudio marca las tres y catorce. En dos minutos tengo que entrar con la siguiente canción. Tengo las manos frías. No sé si es miedo o es la calefacción, que a estas horas ya no funciona.</p>
+
+    <p>—No cuelgues, Marcos —dice la voz—. Si cuelgas, no vuelvo a llamar. Y lo que hay en tu casa se queda sin nadie que lo mire.</p>
+
+    <p class="scene-break">· · ·</p>
+
+    <p>Me quedo mirando el teléfono. La línea dos sigue abierta. Al otro lado, esa respiración tranquila, esperando. La ciudad duerme. Mi casa está a diez minutos de aquí. Y la puerta del baño, que yo nunca cierro, va a estar cerrada.</p>
+  </article>
+
+  <section class="vote">
+    <h3>¿Qué hace <span>Marcos</span>?</h3>
+    <p class="sub">Tú decides. El capítulo siguiente sigue la opción ganadora.</p>
+    <div class="options">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeFAbVp53uzOJj5y3Oi5wZ2y9kdC2Q-GFYg_7TwFqXuttxcFw/viewform">
+        <span class="letter">A</span>
+        <span class="txt">Salir del estudio e ir a casa ahora mismo</span>
+      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeFAbVp53uzOJj5y3Oi5wZ2y9kdC2Q-GFYg_7TwFqXuttxcFw/viewform">
+        <span class="letter">B</span>
+        <span class="txt">Quedarse en antena y seguir hablando con la voz</span>
+      </a>
+    </div>
+    <p class="deadline">La votación cierra el miércoles 11 de noviembre a las 23:59</p>
+  </section>
+
+  <footer>
+    <p class="next">PRÓXIMO CAPÍTULO · JUEVES 12 DE NOVIEMBRE</p>
+    <p>Escrita por Tecnotron. Historia de ficción: cualquier parecido con la realidad es mala suerte.</p>
+    <p>Tú decides la historia · un capítulo por semana</p>
+  </footer>
+
+</div>
+</body>
+</html>
